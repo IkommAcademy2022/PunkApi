@@ -9,54 +9,59 @@
 {
 
     <MudCard>
-@*        <MudCardMedia Image="@SelectedBeer.ImageUrl.ToString()" />
-*@        <MudImage Src="@SelectedBeer.ImageUrl.ToString()" Alt="Mony the dog" Elevation="25" Class="rounded-lg"/>
+        <MudImage Src="@SelectedBeer.ImageUrl.ToString()" Alt="@SelectedBeer.Name" Elevation="25" Class="rounded-lg"/>
         <MudCardContent>
             <MudText Typo="Typo.h5">@SelectedBeer.Name</MudText>
             
-            <MudTable Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
-                    <MudTd DataLabel="Id">@SelectedBeer.Tagline</MudTd>                    
-            </MudTable>
+            <MudSimpleTable Dense="true">
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>Tagline</td>
+                        <td>@SelectedBeer.Tagline</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>@SelectedBeer.Id</td>
+                    </tr>
+
+                </tbody>
+                  
+            </MudSimpleTable>
         </MudCardContent>
     </MudCard>
 
-    <MudSimpleTable Dense="true" >
-    <tbody>
-        
-            <tr>
-                <td></td>
-                    <td>
-                        @if (row.GetValue(SelectedBeer).GetType().IsPrimitive || row.GetValue(SelectedBeer).GetType().Equals(typeof(string))) 
-                        {
-                            TableFy(row.GetValue(SelectedBeer)); 
-                        } 
-                        else 
-                        {
-                            
-                        }
-                    </td>
-                </tr>
-        }
-    </tbody>
-</MudSimpleTable>
 }
 
 @code {
