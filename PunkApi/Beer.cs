@@ -11,77 +11,77 @@ namespace ApiDemo.PunkApi
 {
     using System;
     using System.Collections.Generic;
-    using J = System.Text.Json.Serialization.JsonPropertyNameAttribute;
+    using JsonName = System.Text.Json.Serialization.JsonPropertyNameAttribute;
 
     public partial class Beer
     {
-        [J("id")] public long Id { get; set; }
-        [J("name")] public string Name { get; set; }
-        [J("tagline")] public string Tagline { get; set; }
-        [J("first_brewed")] public string FirstBrewed { get; set; }
-        [J("description")] public string Description { get; set; }
-        [J("image_url")] public Uri ImageUrl { get; set; }
-        [J("abv")] public double Abv { get; set; }
-        [J("ibu")] public double? Ibu { get; set; }
-        [J("target_fg")] public long TargetFg { get; set; }
-        [J("target_og")] public double TargetOg { get; set; }
-        [J("ebc")] public long? Ebc { get; set; }
-        [J("srm")] public double? Srm { get; set; }
-        [J("ph")] public double? Ph { get; set; }
-        [J("attenuation_level")] public double AttenuationLevel { get; set; }
-        [J("volume")] public BoilVolume Volume { get; set; }
-        [J("boil_volume")] public BoilVolume BoilVolume { get; set; }
-        [J("method")] public Method Method { get; set; }
-        [J("ingredients")] public Ingredients Ingredients { get; set; }
-        [J("food_pairing")] public List<string> FoodPairing { get; set; }
-        [J("brewers_tips")] public string BrewersTips { get; set; }
-        [J("contributed_by")] public string ContributedBy { get; set; }
+        [JsonName("id")] public long Id { get; set; }
+        [JsonName("name")] public string Name { get; set; }
+        [JsonName("tagline")] public string Tagline { get; set; }
+        [JsonName("first_brewed")] public string FirstBrewed { get; set; }
+        [JsonName("description")] public string Description { get; set; }
+        [JsonName("image_url")] public Uri ImageUrl { get; set; }
+        [JsonName("abv")] public double Abv { get; set; }
+        [JsonName("ibu")] public double? Ibu { get; set; }
+        [JsonName("target_fg")] public long TargetFg { get; set; }
+        [JsonName("target_og")] public double TargetOg { get; set; }
+        [JsonName("ebc")] public long? Ebc { get; set; }
+        [JsonName("srm")] public double? Srm { get; set; }
+        [JsonName("ph")] public double? Ph { get; set; }
+        [JsonName("attenuation_level")] public double AttenuationLevel { get; set; }
+        [JsonName("volume")] public BoilVolume Volume { get; set; }
+        [JsonName("boil_volume")] public BoilVolume BoilVolume { get; set; }
+        [JsonName("method")] public Method Method { get; set; }
+        [JsonName("ingredients")] public Ingredients Ingredients { get; set; }
+        [JsonName("food_pairing")] public List<string> FoodPairing { get; set; }
+        [JsonName("brewers_tips")] public string BrewersTips { get; set; }
+        [JsonName("contributed_by")] public string ContributedBy { get; set; }
     }
 
     public partial class BoilVolume
     {
-        [J("value")] public double Value { get; set; }
-        [J("unit")] public string Unit { get; set; }
+        [JsonName("value")] public double Value { get; set; }
+        [JsonName("unit")] public string Unit { get; set; }
         public override string ToString() => $"{Value} {Unit}";
     }
 
     public partial class Ingredients
     {
-        [J("malt")] public List<Malt> Malt { get; set; }
-        [J("hops")] public List<Hop> Hops { get; set; }
-        [J("yeast")] public string Yeast { get; set; }
+        [JsonName("malt")] public List<Malt> Malt { get; set; }
+        [JsonName("hops")] public List<Hop> Hops { get; set; }
+        [JsonName("yeast")] public string Yeast { get; set; }
     }
 
     public partial class Hop
     {
-        [J("name")] public string Name { get; set; }
-        [J("amount")] public BoilVolume Amount { get; set; }
-        [J("add")] public string Add { get; set; }
-        [J("attribute")] public string Attribute { get; set; }
+        [JsonName("name")] public string Name { get; set; }
+        [JsonName("amount")] public BoilVolume Amount { get; set; }
+        [JsonName("add")] public string Add { get; set; }
+        [JsonName("attribute")] public string Attribute { get; set; }
     }
 
     public partial class Malt
     {
-        [J("name")] public string Name { get; set; }
-        [J("amount")] public BoilVolume Amount { get; set; }
+        [JsonName("name")] public string Name { get; set; }
+        [JsonName("amount")] public BoilVolume Amount { get; set; }
     }
 
     public partial class Method
     {
-        [J("mash_temp")] public List<MashTemp> MashTemp { get; set; }
-        [J("fermentation")] public Fermentation Fermentation { get; set; }
-        [J("twist")] public object Twist { get; set; }
+        [JsonName("mash_temp")] public List<MashTemp> MashTemp { get; set; }
+        [JsonName("fermentation")] public Fermentation Fermentation { get; set; }
+        [JsonName("twist")] public object Twist { get; set; }
     }
 
     public partial class Fermentation
     {
-        [J("temp")] public BoilVolume Temp { get; set; }
+        [JsonName("temp")] public BoilVolume Temp { get; set; }
     }
 
     public partial class MashTemp
     {
-        [J("temp")] public BoilVolume Temp { get; set; }
-        [J("duration")] public object Duration { get; set; }
+        [JsonName("temp")] public BoilVolume Temp { get; set; }
+        [JsonName("duration")] public object Duration { get; set; }
     }
 
 }
