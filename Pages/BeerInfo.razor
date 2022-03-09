@@ -1,0 +1,78 @@
+﻿@page "/beer/{index:int}"
+@using ApiDemo.PunkApi
+@using System.Text
+@inject HttpClient Http
+<PageTitle>Your selected beer</PageTitle>
+
+
+@if(SelectedBeer is not null)
+{
+
+    <MudCard>
+@*        <MudCardMedia Image="@SelectedBeer.ImageUrl.ToString()" />
+*@        <MudImage Src="@SelectedBeer.ImageUrl.ToString()" Alt="Mony the dog" Elevation="25" Class="rounded-lg"/>
+        <MudCardContent>
+            <MudText Typo="Typo.h5">@SelectedBeer.Name</MudText>
+            
+            <MudTable Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Id</MudTd>                    
+                    <MudTd DataLabel="Id">@SelectedBeer.Tagline</MudTd>                    
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+
+    <MudSimpleTable Dense="true" >
+    <tbody>
+        
+            <tr>
+                <td></td>
+                    <td>
+                        @if (row.GetValue(SelectedBeer).GetType().IsPrimitive || row.GetValue(SelectedBeer).GetType().Equals(typeof(string))) 
+                        {
+                            TableFy(row.GetValue(SelectedBeer)); 
+                        } 
+                        else 
+                        {
+                            
+                        }
+                    </td>
+                </tr>
+        }
+    </tbody>
+</MudSimpleTable>
+}
+
+@code {
+    [Parameter] public int index { get; set; }
+    private Beer SelectedBeer;
+    protected override async Task OnInitializedAsync()
+    {
+        SelectedBeer = await GetMeMyBeer(index);
+        await base.OnInitializedAsync();
+    }
+
+    private async Task<Beer> GetMeMyBeer(int beerNumber)
+    {
+        var beer = await Http.GetFromJsonAsync<Beer[]>(ApiUrls.Beer(beerNumber));
+        return beer.FirstOrDefault();
+    }
+
+}
+
