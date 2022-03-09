@@ -14,8 +14,7 @@
         <MudItem xs="7">
             <MudCard>        
                 <MudCardContent>
-                    <MudText Typo="Typo.h5">@SelectedBeer.Name</MudText>
-            
+                    <MudText Typo="Typo.h5">@SelectedBeer.Name</MudText>            
                     <MudSimpleTable Dense="false">
                         <tbody>
                             <tr>
@@ -45,28 +44,55 @@
                     <MudSimpleTable Dense="true">
                                 <thead>
                                     <tr>
-                                        <th>Ingredient</th><th>Amount</th>
+                                        <th>Hops Type</th>
+                                        <th>Amount</th>
+                                        <th>Add</th>
+                                        <th>Attribute</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var hop in @SelectedBeer.Ingredients.Hops)
                                     {
                                     <tr>
-                                        <td>@hop.Name</td><td>@hop.Amount</td>
+                                        <td>@hop.Name</td>
+                                        <td>@hop.Amount</td>
+                                        <td>@hop.Add</td>
+                                        <td>@hop.Attribute</td>
                                     </tr>  
                                     }   
+                                    
+                                </tbody>
+                    </MudSimpleTable>
+                    <MudSimpleTable Dense="true">
+                                <thead>
+                                    <tr>
+                                        <th>Malt Type</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     
                                     @foreach (var malt in @SelectedBeer.Ingredients.Malt)
                                     {
                                     <tr>
                                         <td>@malt.Name</td><td>@malt.Amount</td>
                                     </tr>  
                                     }    
+
+                                </tbody>
+                    </MudSimpleTable>
+                    <MudSimpleTable Dense="true">
+                                <thead>
                                     <tr>
-                                        <td>Yeast</td>
+                                        <th>Yeast</th>
+                                    </tr>
+                                </thead>
+                                <tbody>  
+                                    <tr>
                                         <td>@SelectedBeer.Ingredients.Yeast</td>
                                     </tr>
                                 </tbody>
-                            </MudSimpleTable>
+                    </MudSimpleTable>
                 </MudCardContent>
             </MudCard>
         </MudItem>
@@ -75,7 +101,7 @@
 
 @code {
     [Parameter] public int index { get; set; }
-    private Beer SelectedBeer;
+    private Beer SelectedBeer = default!;
     protected override async Task OnInitializedAsync()
     {
         SelectedBeer = await GetMeMyBeer(index);
@@ -85,7 +111,7 @@
     private async Task<Beer> GetMeMyBeer(int beerNumber)
     {
         var beer = await Http.GetFromJsonAsync<Beer[]>(ApiUrls.Beer(beerNumber));
-        return beer.FirstOrDefault();
+        return beer.FirstOrDefault()!;
     }
 
 }
