@@ -16,9 +16,9 @@ else
 {
     <MudTable Items="beers" T="Beer" Hover="true" SortLabel="Sort By" Elevation="0" OnRowClick="@RowClicked">
         <HeaderContent>
-            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Beer, object>(x=>x.Description)">Description</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<Beer, object>(x=>x.Description)">Description</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<Beer, object>(x=>x.Abv)">ABV</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<Beer, object>(x=>x.FirstBrewed)">First Brewed</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Beer, object>(x=>x.FirstBrewed)">First Brewed</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<Beer, object>(x=>x.Volume.Value)">Volume</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
